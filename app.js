@@ -178,7 +178,7 @@ url.searchParams.set("b",encodeURIComponent(fr))
 url.searchParams.set("m",String(money))
 const text=`${my}(이)가 ${fr}에게 줘야할 친구비는...\n총 금액: ${fmtWon(money)}`
 try{
-if(navigator.share){await navigator.share({title:"설날 친구비 정산서",text,url:url.toString()});return}
+if(navigator.share){await navigator.share({title:"클친(클라이밍친구)비 정산서",text,url:url.toString()});return}
 }catch(e){}
 try{await navigator.clipboard.writeText(url.toString());alert("링크 복사 완료 😎")}catch(e){prompt("복사 안 되면 이거 복붙 ㄱㄱ",url.toString())}
 }
@@ -253,3 +253,4 @@ return true
 qTotalEl.textContent=String(QUESTIONS.length)
 qTotal2El.textContent=String(QUESTIONS.length)
 if(!restoreFromQuery()) show("start")
+
