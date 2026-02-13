@@ -154,10 +154,10 @@ const my=(myNameInput.value||"").trim()||"나"
 const fr=(friendNameInput.value||"").trim()||"너"
 
 if(money<0){
-resultLineEl.textContent=`오히려 ${fr}가 ${my}한테 줘야함…`
+resultLineEl.textContent=`오히려 ${my}(이)가 ${fr}한테 줘야함…`
 resultMoneyEl.textContent=fmtWon(Math.abs(money))
 }else{
-resultLineEl.textContent=`${my}가 ${fr}에게 줘야할 친구비는...`
+resultLineEl.textContent=`${fr}가 ${my}에게 줘야할 친구비는...`
 resultMoneyEl.textContent=fmtWon(money)
 }
 
@@ -177,12 +177,29 @@ const url=new URL(location.href)
 url.searchParams.set("a",encodeURIComponent(my))
 url.searchParams.set("b",encodeURIComponent(fr))
 url.searchParams.set("m",String(money))
-const text=`${my}(이)가 ${fr}에게 줘야할 친구비는...\n총 금액: ${fmtWon(money)}`
-try{
-if(navigator.share){await navigator.share({title:"클친(클라이밍친구)비 정산서",text,url:url.toString()});return}
-}catch(e){}
-try{await navigator.clipboard.writeText(url.toString());alert("링크 복사 완료 😎")}catch(e){prompt("복사 안 되면 이거 복붙 ㄱㄱ",url.toString())}
+
+let text
+if(money>0){
+text=`${fr}(이)가 ${my}에게 줘야할 친구비는...`
+}else(money<0){
+text=`${my}(이)가 ${fr}에게 줘야할 친구비는...`
 }
+
+try{
+if(navigator.share){
+await navigator.share({title:"클친(클라이밍친구)비 정산서",text,url:url.toString()})
+return
+}
+}catch(e){}
+
+try{
+await navigator.clipboard.writeText(url.toString())
+alert("링크 복사 완료 😎")
+}catch(e){
+prompt("복사 안 되면 이거 복붙 ㄱㄱ",url.toString())
+}
+}
+
 
 async function saveCard(){
 const card=$("resultCard")
@@ -238,10 +255,10 @@ myNameInput.value=my
 friendNameInput.value=fr
 
 if(money<0){
-resultLineEl.textContent=`오히려 ${fr}가 ${my}한테 줘야함…`
+resultLineEl.textContent=`오히려 ${my}가 ${fr}한테 줘야함…`
 resultMoneyEl.textContent=fmtWon(Math.abs(money))
 }else{
-resultLineEl.textContent=`${my}가 ${fr}에게 줘야할 친구비는...`
+resultLineEl.textContent=`${fr}가 ${my}에게 줘야할 친구비는...`
 resultMoneyEl.textContent=fmtWon(money)
 }
 
@@ -254,6 +271,7 @@ return true
 qTotalEl.textContent=String(QUESTIONS.length)
 qTotal2El.textContent=String(QUESTIONS.length)
 if(!restoreFromQuery()) show("start")
+
 
 
 
