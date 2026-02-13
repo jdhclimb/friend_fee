@@ -151,8 +151,15 @@ function showResult(){
 const money=calcScore()
 const my=(myNameInput.value||"").trim()||"나"
 const fr=(friendNameInput.value||"").trim()||"너"
-resultLineEl.textContent=`${my}(이)가 ${fr}에게 줘야할 친구비는...`
+
+if(money<0){
+resultLineEl.textContent=`오히려 ${fr}가 ${my}한테 줘야함…`
+resultMoneyEl.textContent=fmtWon(Math.abs(money))
+}else{
+resultLineEl.textContent=`${my}가 ${fr}에게 줘야할 친구비는...`
 resultMoneyEl.textContent=fmtWon(money)
+}
+
 const url=new URL(location.href)
 url.searchParams.set("a",encodeURIComponent(my))
 url.searchParams.set("b",encodeURIComponent(fr))
@@ -221,16 +228,27 @@ const m=url.searchParams.get("m")
 const a=url.searchParams.get("a")
 const b=url.searchParams.get("b")
 if(!m) return false
+
 const money=Number(m)||0
 const my=decodeURIComponent(a||"나")
 const fr=decodeURIComponent(b||"너")
+
 myNameInput.value=my
 friendNameInput.value=fr
-resultLineEl.textContent=`${my}(이)가 ${fr}에게 줘야할 친구비는...`
+
+if(money<0){
+resultLineEl.textContent=`오히려 ${fr}가 ${my}한테 줘야함…`
+resultMoneyEl.textContent=fmtWon(Math.abs(money))
+}else{
+resultLineEl.textContent=`${my}가 ${fr}에게 줘야할 친구비는...`
 resultMoneyEl.textContent=fmtWon(money)
+}
+
 show("result")
 return true
 }
+
+
 
 qTotalEl.textContent=String(QUESTIONS.length)
 qTotal2El.textContent=String(QUESTIONS.length)
