@@ -16,7 +16,8 @@ const QUESTIONS=[
 {key:"E",text:"실패 원인 분석해준 적 있다",score:30000},
 {key:"F",text:"음료 대신 사다준 적 있다",score:30000},
 {key:"G",text:"등반 사진 찍어준 적 있다",score:30000},
-{key:"H",text:"같이 원정 간 적 있다",score:30000}
+{key:"H",text:"같이 원정 간 적 있다",score:30000},
+{key:"H",text:"같이 클라이밍 간 적 있다",score:15000}
 ]},
 {id:"Q02",type:"single",text:"둘이 암장가면",options:[
 {key:"A",text:"내가 챙겨주는 편",score:30000},
@@ -253,4 +254,5 @@ return true
 qTotalEl.textContent=String(QUESTIONS.length)
 qTotal2El.textContent=String(QUESTIONS.length)
 if(!restoreFromQuery()) show("start")
+
 
