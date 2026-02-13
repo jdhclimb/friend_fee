@@ -181,7 +181,7 @@ url.searchParams.set("m",String(money))
 let text
 if(money>0){
 text=`${fr}(이)가 ${my}에게 줘야할 친구비는...`
-}else(money<0){
+}else{
 text=`${my}(이)가 ${fr}에게 줘야할 친구비는...`
 }
 
@@ -265,8 +265,6 @@ resultMoneyEl.textContent=fmtWon(money)
 show("result")
 return true
 }
-
-
 
 qTotalEl.textContent=String(QUESTIONS.length)
 qTotal2El.textContent=String(QUESTIONS.length)
