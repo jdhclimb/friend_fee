@@ -25,7 +25,7 @@ const QUESTIONS=[
 {key:"C",text:"서로 유기하는 편",score:0},
 {key:"D",text:"애가 갑자기 시라져서 유기 당함",score:50000}
 ]},
-{id:"Q03",type:"single",text:"찐막이라더니 진짜 ㄹㅇ 진심 찐막 한 번만 더 라고 한다면",options:[
+{id:"Q03",type:"single",text:"나가기 전 찐막이라더니 진짜 ㄹㅇ 진심 찐막 한 번만 더 라고 한다면",options:[
 {key:"A",text:"기다려준다",score:15000},
 {key:"B",text:"기다리면서 들찍까지 해준다",score:30000},
 {key:"C",text:"ㅇㅇ~ 하셈~ 난 먼저 간다",score:-15000}
@@ -269,6 +269,7 @@ return true
 qTotalEl.textContent=String(QUESTIONS.length)
 qTotal2El.textContent=String(QUESTIONS.length)
 if(!restoreFromQuery()) show("start")
+
 
 
 
